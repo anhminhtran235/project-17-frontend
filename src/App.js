@@ -3,7 +3,6 @@ import './App.css';
 import styled from 'styled-components';
 import { useDropzone } from 'react-dropzone';
 import { useCallback, useState } from 'react';
-// import { uuid } from 'uuidv4';
 import ShortUniqueId from 'short-unique-id';
 import axios from 'axios';
 
@@ -15,20 +14,44 @@ const StyledApp = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+  margin: auto;
+
+  .header {
+    font-size: 2.5em; /* Larger font size for header */
+    font-family: 'Arial', sans-serif; /* Different font family for header */
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .description {
+    margin: 0;
+    font-weight: 400;
+    font-family: 'Verdana', sans-serif; /* Different font family for description */
+    line-height: 1.6; /* Improved line-height for readability */
+    text-align: center;
+  }
+
+  .instructions {
+    margin-top: 20px; /* Add margin for spacing */
+    text-align: center;
+  }
 `;
 
 const DragAndDropStyled = styled.div`
-  width: 500px;
+  width: 400px; /* Increased size */
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 5px dashed #ccc;
+  border: 2px dashed #aaa; /* Subtle border style */
   background: ${(props) => (props.isDragActive ? '#eee' : '#fff')};
   cursor: pointer;
+  margin-top: 20px; /* Add margin for spacing */
   &:hover {
-    opacity: 0.8;
+    background-color: #e0e0e0; /* Hover effect */
+    border-color: #888; /* Change border color on hover */
   }
 `;
 
@@ -42,6 +65,12 @@ function App() {
       const promises = acceptedFiles.map((file) => toBase64(file));
 
       const images = await Promise.all(promises);
+
+      if (images.length > 10) {
+        alert('Please upload less than 10 images at a time');
+        return;
+      }
+
       const imagesWithId = images.map((image) => ({
         id: uuid.rnd(),
         base64Data: image,
@@ -79,15 +108,23 @@ function App() {
 
   return (
     <StyledApp>
-      <h2>
-        You can download data from{' '}
+      <h1 className='header'>Group 17: Alzheimer Identifier</h1>
+      <h2 className='description'>
+        Identifying Alzheimer's Disease Using A Convolutional Neural Network
+        Model
+      </h2>
+      <p className='instructions'>
+        Instructions: Upload one or multiple brain images. The app will predict
+        whether this brain has Alzheimer's disease or not
+        (Demented/Nondemented). You can download data from{' '}
         <a
           target='_blank'
           href='https://www.kaggle.com/datasets/uraninjo/augmented-alzheimer-mri-dataset'
         >
           here
         </a>
-      </h2>
+      </p>
+
       <DragAndDropStyled isDragActive={isDragActive} {...getRootProps()}>
         <input {...getInputProps()} />
         {isDragActive ? (
