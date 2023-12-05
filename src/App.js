@@ -116,8 +116,8 @@ function App() {
       </h2>
       <p className='instructions'>
         Instructions: Upload one or multiple brain images. The app will predict
-        whether this brain has Alzheimer's disease or not
-        (Demented/Nondemented). You can download data from{' '}
+        whether this brain has Alzheimer's disease or not (Has dementia/ No
+        dementia). You can download data from{' '}
         <a
           target='_blank'
           href='https://www.kaggle.com/datasets/uraninjo/augmented-alzheimer-mri-dataset'
