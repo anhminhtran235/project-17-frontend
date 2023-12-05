@@ -55,7 +55,7 @@ function App() {
       }));
 
       const res = await axios.post(
-        'https://alzheimer-detection-4d571ca29b82.herokuapp.com/upload',
+        'https://sfu-340-backend-new-abd2196aa506.herokuapp.com/upload',
         {
           images: imagesForPython,
         }
