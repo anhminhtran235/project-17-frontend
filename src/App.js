@@ -18,6 +18,7 @@ const StyledApp = styled.div`
   margin: auto;
 
   .header {
+    color: #4a90e2;
     font-size: 2.5em; /* Larger font size for header */
     font-family: 'Arial', sans-serif; /* Different font family for header */
     margin-bottom: 10px;
@@ -45,13 +46,13 @@ const DragAndDropStyled = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 2px dashed #aaa; /* Subtle border style */
+  border: 2px dashed #4a90e2;
   background: ${(props) => (props.isDragActive ? '#eee' : '#fff')};
   cursor: pointer;
   margin-top: 20px; /* Add margin for spacing */
   &:hover {
-    background-color: #e0e0e0; /* Hover effect */
-    border-color: #888; /* Change border color on hover */
+    background-color: #e6f0fa; /* Lighter shade of primary color on hover */
+    border-color: #3178c6; /* Darker shade of primary color for border on hover */
   }
 `;
 
