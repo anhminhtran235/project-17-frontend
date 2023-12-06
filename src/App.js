@@ -67,8 +67,8 @@ function App() {
 
       const images = await Promise.all(promises);
 
-      if (images.length > 10) {
-        alert('Please upload less than 10 images at a time');
+      if (images.length > 4) {
+        alert('Please upload less than 4 images at a time');
         return;
       }
 
